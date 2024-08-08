@@ -3,7 +3,7 @@
 ;(function(){
   if (WebAssembly) {
     // WebAssembly.instantiateStreaming is not currently available in Safari
-    if (WebAssembly && !WebAssembly.instantiateStreaming) {
+    if (!WebAssembly.instantiateStreaming) {
       // polyfill
       WebAssembly.instantiateStreaming = async (resp, importObject) => {
         const source = await (await resp).arrayBuffer();
