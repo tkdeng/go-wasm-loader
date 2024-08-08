@@ -25,9 +25,14 @@
       document.querySelectorAll('script[type="wasm/go"]:not([gowasmloaded])').forEach(function(elm){
         elm.setAttribute('gowasmloaded', '');
 
-        if(elm.src.startsWith(window.location.origin+'/')){
+        const src = elm.src;
+        if(src.startsWith(window.location.origin+'/')){
+          if(elm.hasAttribute('hidden')){
+            elm.remove();
+          }
+
           const go = new Go();
-          WebAssembly.instantiateStreaming(fetch(elm.src), go.importObject).then((result) => {
+          WebAssembly.instantiateStreaming(fetch(src), go.importObject).then((result) => {
             go.run(result.instance);
           });
         }
