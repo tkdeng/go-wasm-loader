@@ -27,10 +27,6 @@
 
         const src = elm.src;
         if(src.startsWith(window.location.origin+'/')){
-          if(elm.hasAttribute('hidden')){
-            elm.remove();
-          }
-
           const go = new Go();
           WebAssembly.instantiateStreaming(fetch(src), go.importObject).then((result) => {
             go.run(result.instance);
