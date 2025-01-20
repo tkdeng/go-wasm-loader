@@ -13,7 +13,7 @@
 
     // load go wasm dependency (wasm_exec.js)
     const head = document.head || document.querySelector('head');
-    const gowasmImport = 'https://cdn.jsdelivr.net/gh/golang/go/misc/wasm/wasm_exec.min.js';
+    const gowasmImport = 'https://cdn.jsdelivr.net/gh/tkdeng/go-wasm-loader/wasm_exec.min.js';
     if(document.querySelector('script[src="'+gowasmImport+'"]') == null){
       const script = document.createElement('script');
       script.src = gowasmImport;
